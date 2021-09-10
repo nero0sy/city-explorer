@@ -1,8 +1,8 @@
 import React, {Component} from "react";
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
 import Card from 'react-bootstrap/Card'
+import CityForm from "./component/CItyForm";
 
 
 export class App extends Component {
@@ -36,23 +36,9 @@ export class App extends Component {
   
   render(){
         return (
-            <div>
-
-<Form onSubmit={this.handelSubmit}>
-  <Form.Group className="mb-3" controlId="formBasicEmail">
-    <Form.Label>City name :</Form.Label>
-    <Form.Control type="text" onChange={this.handelLocationNameChange} placeholder="Enter City Name" />
     
-    <Form.Text className="text-muted">. please inter the desiered City name</Form.Text>
-  </Form.Group>
-  {/* <Button variant="primary" type="submit"> */}
-  <Button variant="secondary" type="submit" value="Explorer!">
-    Search
-  </Button>
-</Form>
-
-
    <div>
+     <CityForm handelLocationNameChange={this.handelLocationNameChange} handelSubmit={this.handelSubmit}/>
      <h2>Location Info</h2>
      <p>{this.state.locationData.display_name}</p>
      <p>lat: {this.state.locationData.lat}</p>
@@ -60,13 +46,9 @@ export class App extends Component {
      <img src={`https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATION_IQ_KEY}&center=${this.state.locationData.lat},${this.state.locationData.lon}&zoom=15&size=600x600`} alt=""/>
    </div>
 
-
-        </div>
-
-
         )
 
     }
 }
 
-export default App
+export default App;
